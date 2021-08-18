@@ -1,0 +1,110 @@
+div {
+  margin-top: 10px;
+}
+
+h1, h2 {
+  font-family: Lato;
+}
+
+.header {
+  background-color: lightgray;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+#historyDiv {
+  width: 90%;
+}
+
+
+#historyTable {
+  width: 90%;
+}
+
+th {
+  background-color: lightgray;
+  border: 1px solid;
+  width: 40%;
+}
+
+th.num {
+  width: 20%;
+}
+
+td {
+   border: 1px solid;
+}
+
+#results {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.result {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  
+
+}
+
+div {
+  align-items: center;
+}
+
+#bodyPartResult {
+  background-color: white;
+  border: solid 1px;
+}
+
+
+.historyCol {
+  margin: 5px;
+  flex-direction: column;
+  border: 1px dashed;
+  width: 200px;
+}
+
+.historyCell {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#historyGrid {
+  margin: 5px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+}
+
+#headerGrid {
+  text-align: center;
+  background-color: lightgray;
+}
+
+#resultsGrid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.colourCellGrid {
+  display: flex;
+  border: 1px solid;
+  justify-content: center;
+}
+
+.bodyPartCellGrid {
+  display: flex;
+  border: 1px solid;
+  justify-content: center;
+}
