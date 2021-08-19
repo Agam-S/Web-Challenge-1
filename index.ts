@@ -139,20 +139,83 @@ function stopSpinners() {
 //==============================================================================
 
 // TODO add the newly spun result to the history table
-function addToHistory() {}
+function addToHistory() {
+  let row: HTMLElement = document.createElement('tr');
 
-function statsBtnHandler() {
+  let num: HTMLElement = document.createElement('td');
+  num.innerHTML = String(spinHistoryArray[spinHistoryArray.length - 1].num);
+  row.appendChild(num);
+
+  let colour: HTMLElement = document.createElement('td');
+  colour.innerHTML = String(
+    Colours[spinHistoryArray[spinHistoryArray.length - 1].colour]
+  );
+  row.appendChild(colour);
+
+  let bodyPart: HTMLElement = document.createElement('td');
+  bodyPart.innerHTML = String(
+    BodyParts[spinHistoryArray[spinHistoryArray.length - 1].bodyPart]
+  );
+  row.appendChild(bodyPart);
+
+  history.appendChild(row);
+}
+
+function statsBtnHandler(colour, bodyPart) {
   // TODO set the statsResults div innerHTML to the amount and last spun number that the user has chosen
   // eg. Red LeftHand spun 10 times
   //     Red LeftHand last spun at num 23
+  // console.log(colour, bodyPart);
+
+  // call functions to get values
+
+  let spincombocount = getAmount(colour, bodyPart);
+  // console.log('spincombocount', spincombocount);
+
+  let lastspun = getLastSpun(colour, bodyPart);
+  // console.log('lastspun', lastspun);
+
+  // reset the stats display
+  statsResults.innerHTML = '';
+
+  // add the number of spins
+  let spincombodiv: HTMLElement = document.createElement('div');
+  spincombodiv.innerHTML = `${player} spun ${colour} ${bodyPart} ${spincombocount} times`;
+  statsResults.appendChild(spincombodiv);
+
+  // if a matching spin exists, display the last spin
+  if (lastspun > 0) {
+    let lastspundiv: HTMLElement = document.createElement('div');
+    lastspundiv.innerHTML = `${player} last spun ${colour} ${bodyPart} at num ${lastspun}`;
+    statsResults.appendChild(lastspundiv);
+  }
 }
 
 // TODO returns the amount of times the combination of selected of colour and body part have been spun
-function getAmount(colour, bodyPart): number {
-  return 0;
+function getAmount(player, colour, bodyPart): number {
+  let matchingcount = 0;
+  for (let n = 0; n < spinHistoryArray.length; n++) {
+    if (spinHistoryArray[n].player === player) {
+      if (BodyParts[spinHistoryArray[n].bodyPart] === bodyPart) {
+        if (Colours[spinHistoryArray[n].colour] === colour) {
+          matchingcount++;
+        }
+      }
+    }
+  }
+  return matchingcount;
 }
 
 // TODO return the last num which the combination of selected of colour and body part have been spun
-function getLastSpun(colour, bodyPart): number {
+function getLastSpun(player, colour, bodyPart): number {
+  for (let n = spinHistoryArray.length; n > 0; n--) {
+    if (spinHistoryArray[n - 1].player === player) {
+      if (BodyParts[spinHistoryArray[n - 1].bodyPart] === bodyPart) {
+        if (Colours[spinHistoryArray[n - 1].colour] === colour) {
+          return n;
+        }
+      }
+    }
+  }
   return 0;
 }
