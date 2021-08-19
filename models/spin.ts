@@ -6,7 +6,6 @@ export interface ISpin {
   bodyPart: BodyParts;
 }
 
-// TODO: create a SpinRecord class which implements ISpin and adds a new attribute num:number
 export class SpinRecord implements ISpin {
   num: Number;
   colour: Colours;

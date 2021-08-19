@@ -37,7 +37,6 @@ const history = document.getElementById('historyTableBody');
 
 //==============================================================================
 
-// sets up an array of strings to represent the colours from the enum
 let coloursArray: Array<string> = [];
 for (let colour in Colours) {
   if (isNaN(Number(colour))) {
@@ -49,8 +48,6 @@ for (let colour in Colours) {
     colourSelector.add(colorselect);
   }
 }
-
-// TODO see above and create an array of strings to store the bodypart strings from the enum, and adds the enums to the stats dropdown
 
 let bodyPartsArray: Array<string> = [];
 for (let bodypart in BodyParts) {
@@ -66,7 +63,6 @@ for (let bodypart in BodyParts) {
 
 //==============================================================================
 
-// TODO add eventlistners to buttons
 const spinBtn = <HTMLButtonElement>document.getElementById('spin-btn');
 spinBtn.addEventListener('click', () => spinBtnHandler(2000, 100));
 
@@ -77,24 +73,20 @@ statsBtn.addEventListener('click', () =>
 
 //==============================================================================
 
-// TODO handles the spin button click
 // time in ms, interval in ms
 function spinBtnHandler(time: number, interval: number) {
   // start spinner rotating through colours
   spinnerCycle = setInterval(() => spinSpinners(), interval);
   spinCount++;
 
-  // TODO randomly select colour from array
   let colornum: number = 0;
   colornum = Math.floor(Math.random() * coloursArray.length);
   selectedColour = coloursArray[colornum];
 
-  // TO(DONE)DO randomly select bodyPart from array
   let bodypartnum: number = 0;
   bodypartnum = Math.floor(Math.random() * bodyPartsArray.length);
   selectedBodyPart = bodyPartsArray[bodypartnum];
 
-  // add spin to array
   spinHistoryArray.push(
     new SpinRecord(
       spinCount,
@@ -105,7 +97,6 @@ function spinBtnHandler(time: number, interval: number) {
 
   spinBtn.disabled = true;
 
-  // set timer to stop the spinners rotating
   setTimeout(() => stopSpinners(), time);
 }
 
