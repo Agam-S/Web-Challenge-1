@@ -155,8 +155,12 @@ function statsBtnHandler(colour, bodyPart) {
 
   // add the number of spins
   let numofSpins: HTMLElement = document.createElement('div');
-  numofSpins.innerHTML = `${colour} ${bodyPart} spun ${spincombocount} times.. and last spun at num ${lastspun}`;
+  numofSpins.innerHTML = `${colour} ${bodyPart} spun ${spincombocount} times.`;
   stats.appendChild(numofSpins);
+
+  if (lastspun > 0) {
+    numofSpins.innerHTML = `${colour} ${bodyPart} last spun at num ${lastspun}`;
+  }
 }
 
 //==============================================================================
