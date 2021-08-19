@@ -34,6 +34,7 @@ const bodyPartSelector: HTMLSelectElement = <HTMLSelectElement>(
 );
 const stats = document.getElementById('statsResults');
 const history = document.getElementById('historyTableBody');
+const lastSpun = document.getElementById('lastSpun');
 
 //==============================================================================
 
@@ -159,7 +160,7 @@ function statsBtnHandler(colour, bodyPart) {
   stats.appendChild(numofSpins);
 
   if (lastspun > 0) {
-    numofSpins.innerHTML = `${colour} ${bodyPart} last spun at num ${lastspun}`;
+    lastSpun.innerHTML = `${colour} ${bodyPart} last spun at num ${lastspun}`;
   }
 }
 
