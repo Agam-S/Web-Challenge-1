@@ -62,6 +62,11 @@ for (let bodypart in BodyParts) {
 const spinBtn = <HTMLButtonElement>document.getElementById('spin-btn');
 spinBtn.addEventListener('click', () => spinBtnHandler(2000, 100));
 
+const statsBtn = <HTMLButtonElement>document.getElementById('statsBtn');
+statsBtn.addEventListener('click', () =>
+  statsBtnHandler(colourSelector.value, bodyPartSelector.value)
+);
+
 // TODO handles the spin button click
 // time in ms, interval in ms
 function spinBtnHandler(time: number, interval: number) {
@@ -69,19 +74,29 @@ function spinBtnHandler(time: number, interval: number) {
   spinnerCycle = setInterval(() => spinSpinners(), interval);
 
   // TODO randomly select colour from array
-  let colourIndex: number = 0;
-  selectedColour = coloursArray[colourIndex];
+  let colornum: number = 0;
+  colornum = Math.floor(Math.random() * coloursArray.length);
+  selectedColour = coloursArray[colornum];
 
-  // TODO randomly select bodyPart from array
-  let bodyPartIndex: number = 0;
-  selectedBodyPart = bodyPartsArray[bodyPartIndex];
+  // TO(DONE)DO randomly select bodyPart from array
+  let bodypartnum: number = 0;
+  bodypartnum = Math.floor(Math.random() * bodyPartsArray.length);
+  selectedBodyPart = bodyPartsArray[bodypartnum];
+
+  // add spin to history
+  spinHistoryArray.push(
+    new SpinRecord(
+      spinCount,
+      Colours[selectedColour],
+      BodyParts[selectedBodyPart]
+    )
+  );
 
   spinBtn.disabled = true;
 
   // set timer to stop the spinners rotating
   setTimeout(() => stopSpinners(), time);
 }
-
 // rotates between the colours in Colours.enum.
 function spinSpinners() {
   spinnerCounter++;
