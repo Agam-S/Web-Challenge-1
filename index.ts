@@ -136,25 +136,21 @@ function stopSpinners() {
 //==============================================================================
 
 function addToHistory() {
-  let row: HTMLElement = document.createElement('tr');
+  let newRow = document.createElement('tr');
 
-  let num: HTMLElement = document.createElement('td');
-  num.innerHTML = String(spinHistoryArray[spinHistoryArray.length - 1].num);
-  row.appendChild(num);
+  let NumRow = document.createElement('td');
+  NumRow.innerHTML = spinCount.toString();
+  newRow.append(NumRow);
 
-  let colour: HTMLElement = document.createElement('td');
-  colour.innerHTML = String(
-    Colours[spinHistoryArray[spinHistoryArray.length - 1].colour]
-  );
-  row.appendChild(colour);
+  let ColorRow = document.createElement('td');
+  ColorRow.innerHTML = selectedColour;
+  newRow.append(ColorRow);
 
-  let bodyPart: HTMLElement = document.createElement('td');
-  bodyPart.innerHTML = String(
-    BodyParts[spinHistoryArray[spinHistoryArray.length - 1].bodyPart]
-  );
-  row.appendChild(bodyPart);
+  let BodyPartRow = document.createElement('td');
+  BodyPartRow.innerHTML = selectedBodyPart;
+  newRow.append(BodyPartRow);
 
-  history.appendChild(row);
+  history.append(newRow);
 }
 
 //==============================================================================
@@ -194,8 +190,6 @@ function getLastSpun(colour, bodyPart): number {
       }
     }
   }
-
   return 0;
 }
-
 //==============================================================================
