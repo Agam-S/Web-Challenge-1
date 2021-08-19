@@ -4,6 +4,8 @@ import { Colours } from './models/colours.enum';
 import { BodyParts, BodyPartsHelper } from './models/bodyParts.enum';
 import { SpinRecord } from './models/spin';
 
+//==============================================================================
+
 // used to make the spinner spin
 let spinnerCounter = 0;
 
@@ -20,6 +22,8 @@ let selectedBodyPart: string;
 // use to store the results of spins
 let spinHistoryArray: Array<SpinRecord> = [];
 
+//==============================================================================
+
 const colourDiv = document.getElementById('colourResult');
 const colourSelector: HTMLSelectElement = <HTMLSelectElement>(
   document.getElementById('colourSelect')
@@ -30,6 +34,8 @@ const bodyPartSelector: HTMLSelectElement = <HTMLSelectElement>(
 );
 const stats = document.getElementById('statsResults');
 const history = document.getElementById('historyTableBody');
+
+//==============================================================================
 
 // sets up an array of strings to represent the colours from the enum
 let coloursArray: Array<string> = [];
@@ -58,6 +64,8 @@ for (let bodypart in BodyParts) {
   }
 }
 
+//==============================================================================
+
 // TODO add eventlistners to buttons
 const spinBtn = <HTMLButtonElement>document.getElementById('spin-btn');
 spinBtn.addEventListener('click', () => spinBtnHandler(2000, 100));
@@ -66,6 +74,8 @@ const statsBtn = <HTMLButtonElement>document.getElementById('statsBtn');
 statsBtn.addEventListener('click', () =>
   statsBtnHandler(colourSelector.value, bodyPartSelector.value)
 );
+
+//==============================================================================
 
 // TODO handles the spin button click
 // time in ms, interval in ms
@@ -97,6 +107,9 @@ function spinBtnHandler(time: number, interval: number) {
   // set timer to stop the spinners rotating
   setTimeout(() => stopSpinners(), time);
 }
+
+//==============================================================================
+
 // rotates between the colours in Colours.enum.
 function spinSpinners() {
   spinnerCounter++;
@@ -107,14 +120,22 @@ function spinSpinners() {
   bodyPartP.innerHTML = bodyPartsArray[spinnerCounter % bodyPartsArray.length];
 }
 
+//==============================================================================
+
 // stops spinner after time parameter, time in ms
 function stopSpinners() {
   clearInterval(spinnerCycle);
   // TODO set colourDiv and bodyPartP to the randomly spun results
+  colourDiv.style.backgroundColor = selectedColour;
+  bodyPartP.innerHTML = selectedBodyPart;
+
+  spinBtn.disabled = false;
 
   spinBtn.disabled = false;
   addToHistory();
 }
+
+//==============================================================================
 
 // TODO add the newly spun result to the history table
 function addToHistory() {}
