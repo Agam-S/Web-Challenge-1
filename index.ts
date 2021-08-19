@@ -94,7 +94,7 @@ function spinBtnHandler(time: number, interval: number) {
   bodypartnum = Math.floor(Math.random() * bodyPartsArray.length);
   selectedBodyPart = bodyPartsArray[bodypartnum];
 
-  // add spin to history
+  // add spin to array
   spinHistoryArray.push(
     new SpinRecord(
       spinCount,
