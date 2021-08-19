@@ -192,30 +192,9 @@ function statsBtnHandler(colour, bodyPart) {
 }
 
 // TODO returns the amount of times the combination of selected of colour and body part have been spun
-function getAmount(player, colour, bodyPart): number {
-  let matchingcount = 0;
-  for (let n = 0; n < spinHistoryArray.length; n++) {
-    if (spinHistoryArray[n].player === player) {
-      if (BodyParts[spinHistoryArray[n].bodyPart] === bodyPart) {
-        if (Colours[spinHistoryArray[n].colour] === colour) {
-          matchingcount++;
-        }
-      }
-    }
-  }
-  return matchingcount;
-}
+function getAmount(colour, bodyPart) {}
 
 // TODO return the last num which the combination of selected of colour and body part have been spun
-function getLastSpun(player, colour, bodyPart): number {
-  for (let n = spinHistoryArray.length; n > 0; n--) {
-    if (spinHistoryArray[n - 1].player === player) {
-      if (BodyParts[spinHistoryArray[n - 1].bodyPart] === bodyPart) {
-        if (Colours[spinHistoryArray[n - 1].colour] === colour) {
-          return n;
-        }
-      }
-    }
-  }
+function getLastSpun(colour, bodyPart) {
   return 0;
 }
