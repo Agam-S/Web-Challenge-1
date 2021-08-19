@@ -82,6 +82,7 @@ statsBtn.addEventListener('click', () =>
 function spinBtnHandler(time: number, interval: number) {
   // start spinner rotating through colours
   spinnerCycle = setInterval(() => spinSpinners(), interval);
+  spinCount++;
 
   // TODO randomly select colour from array
   let colornum: number = 0;
